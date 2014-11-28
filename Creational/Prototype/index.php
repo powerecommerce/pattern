@@ -24,7 +24,14 @@
 
 require_once '../../autoload.php';
 
-$client = new \PowerEcommerce\Pattern\Creational\Prototype\Client();
-$client->operation();
+$p1 = new \PowerEcommerce\Pattern\Creational\Prototype\ConcretePrototype1();
+$p2 = new \PowerEcommerce\Pattern\Creational\Prototype\ConcretePrototype2();
 
-var_dump($client);
+$client1 = new \PowerEcommerce\Pattern\Creational\Prototype\Client($p1);
+$client1->operation();
+
+$client2 = new \PowerEcommerce\Pattern\Creational\Prototype\Client($p1);
+$client2->operation();
+
+var_dump($client1);
+var_dump($client2);

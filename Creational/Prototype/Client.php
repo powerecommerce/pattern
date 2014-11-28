@@ -31,17 +31,29 @@ namespace PowerEcommerce\Pattern\Creational\Prototype {
     class Client
     {
         /**
-         * @var \PowerEcommerce\Pattern\Creational\Prototype\Prototype[]
+         * @var \PowerEcommerce\Pattern\Creational\Prototype\Prototype
          */
-        private $_prototype = [];
+        private $_prototype;
+
+        /**
+         * @var string[]
+         */
+        private $_hash;
+
+        /**
+         * @param \PowerEcommerce\Pattern\Creational\Prototype\Prototype $prototype
+         */
+        function __construct(Prototype $prototype)
+        {
+            $this->_prototype = $prototype;
+        }
 
         function operation()
         {
-            $p1 = new ConcretePrototype1();
-            $this->_prototype[] = clone $p1;
+            $p = clone $this->_prototype;
 
-            $p2 = new ConcretePrototype2();
-            $this->_prototype[] = clone $p2;
+            $this->_hash[] = spl_object_hash($p);
+            $this->_hash[] = spl_object_hash($this->_prototype);
         }
     }
 }
