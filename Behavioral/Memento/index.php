@@ -22,25 +22,17 @@
  * THE SOFTWARE.
  */
 
-namespace PowerEcommerce\Pattern\Behavioral\Mediator {
+require_once '../../autoload.php';
 
-    /**
-     * Class Colleague
-     * @package PowerEcommerce\Pattern\Behavioral\Mediator
-     */
-    abstract class Colleague
-    {
-        /**
-         * @var \PowerEcommerce\Pattern\Behavioral\Mediator\Mediator
-         */
-        protected $mediator;
+$o = new \PowerEcommerce\Pattern\Behavioral\Memento\Originator();
+$o->setState('1');
+var_dump($o);
 
-        /**
-         * @param \PowerEcommerce\Pattern\Behavioral\Mediator\Mediator $mediator
-         */
-        function __construct(Mediator $mediator)
-        {
-            $this->mediator = $mediator;
-        }
-    }
-}
+$c = new \PowerEcommerce\Pattern\Behavioral\Memento\Caretaker();
+$c->setMemento($o->createMemento());
+
+$o->setState('0');
+var_dump($o);
+
+$o->setMemento($c->getMemento());
+var_dump($o);

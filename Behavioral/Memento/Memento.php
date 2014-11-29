@@ -22,25 +22,33 @@
  * THE SOFTWARE.
  */
 
-namespace PowerEcommerce\Pattern\Behavioral\Mediator {
+namespace PowerEcommerce\Pattern\Behavioral\Memento {
 
     /**
-     * Class Colleague
-     * @package PowerEcommerce\Pattern\Behavioral\Mediator
+     * Class Memento
+     * @package PowerEcommerce\Pattern\Behavioral\Memento
      */
-    abstract class Colleague
+    class Memento
     {
         /**
-         * @var \PowerEcommerce\Pattern\Behavioral\Mediator\Mediator
+         * @var string
          */
-        protected $mediator;
+        private $_state;
 
         /**
-         * @param \PowerEcommerce\Pattern\Behavioral\Mediator\Mediator $mediator
+         * @param string $_state
          */
-        function __construct(Mediator $mediator)
+        function __construct($_state)
         {
-            $this->mediator = $mediator;
+            $this->_state = $_state;
+        }
+
+        /**
+         * @return string
+         */
+        public function getState()
+        {
+            return $this->_state;
         }
     }
 }
