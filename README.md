@@ -26,3 +26,5 @@
     9. Strategy
     10. Template Method
     11. Visitor
+4. Patterns of Enterprise Application Architecture
+    1. Money
